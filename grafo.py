@@ -18,7 +18,6 @@ root.mainloop()
 expresionRegular=entry_var.get()
 expresionRegular=expresionRegular.lower()
 comprobador=list(expresionRegular)
-print(comprobador)
 G = nx.DiGraph()
 G.add_nodes_from([1, 2, 3, 4, 5, 6, 7, 8,9])
 G.add_edges_from([(1, 2),(1,3),(3,3),(2,4),(2,5),(4,6),(4,7),(6,7),(5,8),(8,7),(7,7),(5,9),(9,9)])
@@ -49,11 +48,33 @@ nx.draw_networkx_edge_labels(
                  (8, 5): 'B,A'},
     font_color='black'
 )
-comprobador[0]='a'
-if comprobador[i]=='a':
-    nx.draw(G.subgraph(2),pos=pos,node_color="blue")
-else:
+bandera=True
+if comprobador==[]:
     nx.draw(G.subgraph(1),pos=pos,node_color="blue")
-
+elif comprobador[0]=='a':
+    nx.draw(G.subgraph(1),pos=pos,node_color="blue")
+    nx.draw(G.subgraph(2),pos=pos,node_color="purple")
+    if comprobador[1]=='a':
+        nx.draw(G.subgraph([2,4]),pos=pos,node_color="blue")
+        if comprobador[2]=='a':
+            nx.draw(G.subgraph(6),pos=pos,node_color="purple")
+            if comprobador[3]=='b':
+                nx.draw(G.subgraph(6),pos=pos,node_color="blue")
+                nx.draw(G.subgraph(7),pos=pos,node_color="gray")
+                bandera=False
+    elif comprobador[1]=='b':
+        nx.draw(G.subgraph(5),pos=pos,node_color="blue")
+        if comprobador[2]=='a':
+            nx.draw(G.subgraph(8),pos=pos,node_color="purple")
+            if comprobador[3]=='a':
+                nx.draw(G.subgraph(8),pos=pos,node_color="blue")
+                nx.draw(G.subgraph(7),pos=pos,node_color="gray")
+                bandera=False
+        elif comprobador[2]=='b':
+            nx.draw(G.subgraph(9),pos=pos,node_color="gray")
+elif comprobador[0]=='b':
+    nx.draw(G.subgraph(1),pos=pos,node_color="blue")
+    nx.draw(G.subgraph(3),pos=pos,node_color="gray")
+    bandera=False
 plt.axis('off')
 plt.show()
